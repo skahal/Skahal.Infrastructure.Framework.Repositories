@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skahal.Infrastructure.Framework.Repositories", "Skahal.Infrastructure.Framework.Repositories\Skahal.Infrastructure.Framework.Repositories.csproj", "{AEB43A6A-BC68-4A45-B779-EC8BCAB69C0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skahal.Infrastructure.Framework.Repositories.UnitTests", "Skahal.Infrastructure.Framework.Repositories.UnitTests\Skahal.Infrastructure.Framework.Repositories.UnitTests.csproj", "{082C70E4-D966-4268-8F98-64AECA63EA5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEB43A6A-BC68-4A45-B779-EC8BCAB69C0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEB43A6A-BC68-4A45-B779-EC8BCAB69C0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEB43A6A-BC68-4A45-B779-EC8BCAB69C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEB43A6A-BC68-4A45-B779-EC8BCAB69C0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{082C70E4-D966-4268-8F98-64AECA63EA5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{082C70E4-D966-4268-8F98-64AECA63EA5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{082C70E4-D966-4268-8F98-64AECA63EA5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{082C70E4-D966-4268-8F98-64AECA63EA5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
