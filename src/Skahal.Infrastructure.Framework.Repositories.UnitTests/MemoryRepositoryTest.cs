@@ -33,7 +33,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             m_target.Add(user);
             m_target.Add(new EntityUserStub() { });
             m_target.Add(new EntityUserStub() { });
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             var result = await m_target.FindAll(f => f.Key == user.Key);
             var actual = result.ToList();
@@ -53,7 +53,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             m_target.Add(new EntityUserStub() { Name = "B" });
             m_target.Add(new EntityUserStub() { Name = "C" });
             m_target.Add(new EntityUserStub() { Name = "A" });
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
 
             var result = await m_target.FindAllAscendingAsync(0, 3, (f) => true, (o) => o.Name);
@@ -88,7 +88,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             m_target.Add(new EntityUserStub() { Name = "B" });
             m_target.Add(new EntityUserStub() { Name = "C" });
             m_target.Add(new EntityUserStub() { Name = "A" });
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             var result = await m_target.FindAllDescendingAsync(0, 3, (f) => true, (o) => o.Name);
             var actual = result.ToList();
@@ -120,7 +120,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             m_target.Add(new EntityUserStub() { });
             m_target.Add(new EntityUserStub() { });
             m_target.Add(new EntityUserStub() { });
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             var actual = await m_target.CountAllAsync(f => true);
             Assert.AreEqual(4, actual);
@@ -142,7 +142,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             m_target.Add(user);
             m_target.Add(user);
 
-            Assert.ThrowsAsync<InvalidOperationException>(async () => await m_unitOfWork.Commit());
+            Assert.ThrowsAsync<InvalidOperationException>(async () => await m_unitOfWork.CommitAsync());
 
             var result = await m_target.FindAll(f => true);
             var actual = result.ToList();
@@ -155,7 +155,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
         public async Task Add_Entity_Added()
         {
             m_target.Add(new EntityUserStub());
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             var result = await m_target.FindAll(f => true);
             var actual = result.ToList();
@@ -164,7 +164,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             Assert.IsFalse(String.IsNullOrWhiteSpace((string)actual[0].Key));
 
             m_target.Add(new EntityUserStub());
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             var result2 = await m_target.FindAll(f => true);
             var actual2 = result2.ToList();
@@ -177,7 +177,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             var target = new MemoryRepository<EntityWithIntIdStub>((e) => 1);
             target.SetUnitOfWork(m_unitOfWork);
             target.Add(new EntityWithIntIdStub());
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             var result = await target.FindAll(f => true);
             var actual = result.ToList();
@@ -201,7 +201,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             var user = new EntityUserStub() { };
             m_target.Remove(user);
 
-            Assert.ThrowsAsync<InvalidOperationException>(async () => await m_unitOfWork.Commit());
+            Assert.ThrowsAsync<InvalidOperationException>(async () => await m_unitOfWork.CommitAsync());
         }
 
         [Test()]
@@ -209,10 +209,10 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
         {
             var user = new EntityUserStub() { };
             m_target.Add(user);
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             m_target.Remove(user);
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             var result = await m_target.FindAll(f => true);
             var actual = result.ToList();
@@ -227,7 +227,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
 
             await m_target.Attach(user);
 
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             Assert.IsNotNull(user.Key);
 
@@ -244,12 +244,12 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             m_target.Add(user);
             user = new EntityUserStub();
             m_target.Add(user);
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             var modifiedUser = new EntityUserStub(user.Key) { Name = "new name" };
             await m_target.Attach(modifiedUser);
 
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             var result = await m_target.FindAll(f => f == user);
             var actual = result.FirstOrDefault();

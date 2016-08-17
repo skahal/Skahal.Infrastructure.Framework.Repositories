@@ -31,7 +31,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
         {
             var entity = new EntityUserStub() { Name = "1" };
             m_userRepository.Add(entity);
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             Assert.AreEqual("1", (await m_userRepository.FindLast()).Name);
         }
@@ -48,7 +48,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             entity = new EntityUserStub() { Key = "3" };
             m_userRepository.Add(entity);
 
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             Assert.AreEqual("3", (await m_userRepository.FindLast()).Key);
         }
@@ -60,7 +60,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
         {
             var entity = new EntityUserStub() { Name = "1" };
             m_userRepository.Add(entity);
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             Assert.IsNull(await m_userRepository.FindFirst((u) => u.Name.Equals("2")));
         }
@@ -71,7 +71,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             m_userRepository.Add(new EntityUserStub() { Name = "1" });
             m_userRepository.Add(new EntityUserStub() { Name = "2" });
             m_userRepository.Add(new EntityUserStub() { Name = "3" });
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             Assert.AreEqual("2", (await m_userRepository.FindFirst((u) => u.Name.Equals("2"))).Name);
         }
@@ -82,7 +82,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             m_userRepository.Add(new EntityUserStub() { Name = "3" });
             m_userRepository.Add(new EntityUserStub() { Name = "1" });
             m_userRepository.Add(new EntityUserStub() { Name = "2" });
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             Assert.AreEqual("1", (await m_userRepository.FindFirstAscending((f) => true, (o) => o.Name)).Name);
             Assert.AreEqual("2", (await m_userRepository.FindFirstAscending((f) => f.Name == "2", (o) => o.Name)).Name);
@@ -94,7 +94,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             m_userRepository.Add(new EntityUserStub() { Name = "1" });
             m_userRepository.Add(new EntityUserStub() { Name = "3" });
             m_userRepository.Add(new EntityUserStub() { Name = "2" });
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             Assert.AreEqual("3", (await m_userRepository.FindFirstDescending((f) => true, (o) => o.Name)).Name);
             Assert.AreEqual("2", (await m_userRepository.FindFirstDescending((f) => f.Name == "2", (o) => o.Name)).Name);
@@ -108,7 +108,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             m_userRepository.Add(new EntityUserStub() { Name = "3" });
             m_userRepository.Add(new EntityUserStub() { Name = "1" });
             m_userRepository.Add(new EntityUserStub() { Name = "2" });
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             var actual = (await m_userRepository.FindAllAscending((o) => o.Name)).ToList();
             Assert.AreEqual(3, actual.Count);
@@ -138,7 +138,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             m_userRepository.Add(new EntityUserStub() { Name = "3" });
             m_userRepository.Add(new EntityUserStub() { Name = "1" });
             m_userRepository.Add(new EntityUserStub() { Name = "2" });
-            await m_unitOfWork.Commit();
+            await m_unitOfWork.CommitAsync();
 
             var actual = (await m_userRepository.FindAllDescending((o) => o.Name)).ToList();
             Assert.AreEqual(3, actual.Count);

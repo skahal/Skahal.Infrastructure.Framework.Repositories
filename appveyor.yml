@@ -1,0 +1,56 @@
+version: 1.0.{build}
+os: Visual Studio 2015
+configuration: Debug
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: Ci5HZS2BTvXqrnjdVArVkPKzSdWdEh+qymL9nSbGtxlyVLjWR6mAz4S0dUriq6Ae
+  GITHUB_REPO_TOKEN:
+    secure: BmRzHKyKfKWWl5p1Q7NYWw4gpheBmyoVdeZOz+NY66TxWn77xgkwZ9rgYWySCwJV
+
+install:
+- cmd: choco install resharper-clt.portable
+- cmd: choco install fxcop
+
+nuget:
+  account_feed: true
+  project_feed: true
+
+before_build:
+- cmd: nuget restore .\src\Skahal.Infrastructure.Framework.Repositories.sln
+
+build:
+  project: src\Skahal.Infrastructure.Framework.Repositories.sln
+  verbosity: minimal
+
+after_build:
+- cmd: >-
+    .\tools\StyleCopCmd\Net.SF.StyleCopCmd.Console\StyleCopCmd.exe -sf .\src\Skahal.Infrastructure.Framework.Repositories.sln --styleCopSettingsFile .\src\Settings.StyleCop -of .\tools\stylecop-report.xml --ignoreFilePattern .+Test\.cs
+
+    .\tools\BadgesSharpCmd.exe -o Skahal -r Skahal.Infrastructure.Framework.Repositories -b StyleCop -c ".\tools\stylecop-report.violations.xml" -a %GITHUB_REPO_TOKEN%
+
+    C:\ProgramData\chocolatey\lib\resharper-clt.portable\tools\dupfinder.exe /output=.\tools\dupFinder-Report.xml /show-text /exclude=**\*Test.cs;**\*.feature.cs;**\BundleConfig.cs .\src\Skahal.Infrastructure.Framework.Repositories.sln
+
+    .\tools\BadgesSharpCmd.exe -o Skahal -r Skahal.Infrastructure.Framework.Repositories -b DupFinder -c .\tools\dupFinder-Report.xml -a %GITHUB_REPO_TOKEN%
+
+    mkdir .\src\nuget
+
+    nuget pack .\src\Skahal.Infrastructure.Framework.Repositories\Skahal.Infrastructure.Framework.Repositories.csproj -IncludeReferencedProjects -Version %APPVEYOR_BUILD_VERSION% -OutputDirectory .\src\nuget
+
+
+test_script:
+- ps: >-
+    .\src\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:nunit3-console.exe -targetargs:"src\Skahal.Infrastructure.Framework.Repositories.UnitTests\bin\Debug\Skahal.Infrastructure.Framework.Repositories.UnitTests.dll" -filter:"+[Skahal.Infrastructure.Framework.Repositories]*" -output:opencoverCoverage.xml
+
+
+    .\src\packages\coveralls.net.0.7.0\tools\csmacnz.Coveralls.exe --opencover -i opencoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
+
+
+artifacts:
+  - path: .\tools\fxcop-report.xml
+    name: FxCop-Report
+  - path: .\tools\stylecop-report.xml
+    name: StyleCop-Report
+  - path: .\tools\dupFinder-report.xml
+    name: DupFinder-report
+  - path: .\nuget\*.nupkg
+    name: NuGet packages

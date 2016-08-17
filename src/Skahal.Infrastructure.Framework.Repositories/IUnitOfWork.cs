@@ -33,7 +33,7 @@ namespace Skahal.Infrastructure.Framework.Repositories
         /// <summary>
         /// Commit the registered entities.
         /// </summary>
-        Task Commit();
+        Task CommitAsync();
 
         /// <summary>
         /// Undo changes made after the latest commit.

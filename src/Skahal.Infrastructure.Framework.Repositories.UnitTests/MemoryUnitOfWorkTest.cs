@@ -17,7 +17,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
 
             target.RegisterAdded(user1, repository);
 
-            await target.Commit();
+            await target.CommitAsync();
 
             repository.VerifyAllExpectations();
         }
@@ -32,7 +32,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
 
             target.RegisterChanged(user1, repository);
 
-            await target.Commit();
+            await target.CommitAsync();
 
             repository.VerifyAllExpectations();
         }
@@ -47,7 +47,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
 
             target.RegisterRemoved(user1, repository);
 
-            await target.Commit();
+            await target.CommitAsync();
 
             repository.VerifyAllExpectations();
         }
@@ -70,7 +70,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             target.RegisterAdded(userToAdd, repository);
             target.RegisterChanged(userToUpdate, repository);
 
-            await target.Commit();
+            await target.CommitAsync();
 
             repository.VerifyAllExpectations();
         }
@@ -91,7 +91,7 @@ namespace Skahal.Infrastructure.Framework.Repositories.UnitTests
             target.RegisterChanged(userToUpdate, repository);
 
             target.Rollback();
-            await target.Commit();
+            await target.CommitAsync();
 
             repository.VerifyAllExpectations();
         }

@@ -56,7 +56,7 @@ namespace Skahal.Infrastructure.Framework.Repositories
         /// <summary>
         /// Commit the registered entities.
         /// </summary>
-        public virtual async Task Commit()
+        public virtual async Task CommitAsync()
         {
             foreach (var item in Entities.Where(e => e.Entity.State == UnitOfWorkEntityState.Removed))
             {

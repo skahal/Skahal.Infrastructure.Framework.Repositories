@@ -42,11 +42,11 @@
     <Compile Include="UnitOfWorkEntity.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Skahal.Infrastructure.Framework.Domain">
-      <HintPath>..\packages\Skahal.Infrastructure.Framework.Domain.1.0.0\lib\Skahal.Infrastructure.Framework.Domain.dll</HintPath>
-    </Reference>
     <Reference Include="HelperSharp.PCL">
       <HintPath>..\references\HelperSharp.PCL.dll</HintPath>
+    </Reference>
+    <Reference Include="Skahal.Infrastructure.Framework.Domain">
+      <HintPath>..\packages\Skahal.Infrastructure.Framework.Domain.1.0.1\lib\Skahal.Infrastructure.Framework.Domain.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
