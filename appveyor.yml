@@ -3,7 +3,7 @@ os: Visual Studio 2015
 configuration: Debug
 environment:
   COVERALLS_REPO_TOKEN:
-    secure: Ci5HZS2BTvXqrnjdVArVkPKzSdWdEh+qymL9nSbGtxlyVLjWR6mAz4S0dUriq6Ae
+    secure: 4NVtL/mY8zBVUqVARnGTgZdwo3YKXttKGRWmgjrFQxRlI+QQQ77MC7hBRFWbKCva
   GITHUB_REPO_TOKEN:
     secure: BmRzHKyKfKWWl5p1Q7NYWw4gpheBmyoVdeZOz+NY66TxWn77xgkwZ9rgYWySCwJV
 
