@@ -3,7 +3,7 @@
 
 ####Code quality
 [![Coverage Status](https://coveralls.io/repos/github/skahal/Skahal.Infrastructure.Framework.Repositories/badge.svg?branch=master)](https://coveralls.io/github/skahal/Skahal.Infrastructure.Framework.Repositories?branch=master)
-[![DupFinder](http://badgessharp.apphb.com/badges/skahal/Skahal.Infrastructure.Framework.Repositories/DupFinder)](https://ci.appveyor.com/project/GiusepeCasagrande/skahal-infrastructure-framework-Repositories/build/artifacts)
+[![DupFinder](https://badgessharp.apphb.com/badges/skahal/Skahal.Infrastructure.Framework.Repositories/DupFinder)](https://ci.appveyor.com/project/GiusepeCasagrande/skahal-infrastructure-framework-Repositories/build/artifacts)
 
 ####Release
 [![License](http://img.shields.io/:license-MIT-blue.svg)](https://raw.githubusercontent.com/skahal/Skahal.Infrastructure.Framework.Repositories/master/LICENSE)

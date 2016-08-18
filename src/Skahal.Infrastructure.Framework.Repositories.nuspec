@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Skahal.Infrastructure.Framework.Repositories</id>
+    <version>0.0.8</version>
+    <authors>Skahal</authors>
+    <owners>g1acomell1,giusepecasagrande</owners>
+    <licenseUrl>https://github.com/skahal/Skahal.Infrastructure.Framework.Repositories/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/skahal/Skahal.Infrastructure.Framework.Repositories</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Skahal's infrastructure framework used in games and apps.</description>
+    <releaseNotes>Split the Skahal.Infrastructure.Framework in several smaller parts.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>ddd unitOfWork framework repository entity</tags>
+  </metadata>
+  <files>
+    <file src="Skahal.Infrastructure.Framework.Repositories/bin/Release/*.dll" target="lib" />
+  </files>
+</package>
