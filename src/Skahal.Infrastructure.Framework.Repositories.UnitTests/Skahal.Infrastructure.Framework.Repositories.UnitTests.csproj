@@ -28,9 +28,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="Ionic.Utils.Zip">
       <HintPath>..\packages\TestSharp.1.0.3\lib\net40\Ionic.Utils.Zip.dll</HintPath>
     </Reference>
@@ -40,8 +37,11 @@
     <Reference Include="Rhino.Mocks">
       <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="Skahal.Infrastructure.Framework.Domain">
-      <HintPath>..\packages\Skahal.Infrastructure.Framework.Domain.1.0.1\lib\Skahal.Infrastructure.Framework.Domain.dll</HintPath>
+      <HintPath>..\packages\Skahal.Infrastructure.Framework.Domain.1.1.0\lib\Skahal.Infrastructure.Framework.Domain.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -5,12 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{AEB43A6A-BC68-4A45-B779-EC8BCAB69C0F}</ProjectGuid>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <UseMSBuildEngine>true</UseMSBuildEngine>
     <OutputType>Library</OutputType>
     <RootNamespace>Skahal.Infrastructure.Framework.Repositories</RootNamespace>
     <AssemblyName>Skahal.Infrastructure.Framework.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,7 +45,7 @@
       <HintPath>..\references\HelperSharp.PCL.dll</HintPath>
     </Reference>
     <Reference Include="Skahal.Infrastructure.Framework.Domain">
-      <HintPath>..\packages\Skahal.Infrastructure.Framework.Domain.1.0.1\lib\Skahal.Infrastructure.Framework.Domain.dll</HintPath>
+      <HintPath>..\packages\Skahal.Infrastructure.Framework.Domain.1.1.0\lib\Skahal.Infrastructure.Framework.Domain.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
